@@ -2,7 +2,24 @@
 name = "zero2prod"
 version = "0.1.0"
 edition = "2021"
+authors = ["Guillaume Latour <g0latour@gmail.com>"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+path = "src/lib.rs"
+[[bin]]
+path = "src/main.rs"
+name = "zero2prod"
 
 [dependencies]
+sqlx = { version = "*", default-features = false, features = [
+  "runtime-tokio-rustls",
+  "macros",
+  "postgres",
+  "uuid",
+  "chrono",
+  "migrate",
+] }
+actix-web = { version = "*" }
+tokio = { version = "*", features = ["macros", "rt-multi-thread"] }
+reqwest = { version = "*" }
