@@ -7,8 +7,8 @@ env:
   SQLX_VERSION: 0.8.0
   SQLX_FEATURES: "rustls,postgres"
   APP_DB_NAME: newsletter
-  APP_USER: postgres
-  APP_USER_PWD: masterpassword
+  APP_USER: app_user
+  APP_USER_PWD: app_password
 
 jobs:
   test:

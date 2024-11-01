@@ -62,9 +62,9 @@ if [[ "${SKIP_DOCKER}" == "false" ]]; then
 		postgres \
 		postgres -N 1000
 	#                ^ increased maximum number of connections for testing purposes
+	wait4pg
 fi
 
-wait4pg
 
 export DATABASE_URL
 sqlx database create
