@@ -12,6 +12,7 @@ path = "src/main.rs"
 name = "zero2prod"
 
 [dependencies]
+config = { version = "*" }
 sqlx = { version = "*", default-features = false, features = [
   "runtime-tokio-rustls",
   "macros",

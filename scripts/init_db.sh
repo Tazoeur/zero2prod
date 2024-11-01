@@ -51,7 +51,7 @@ wait4pg () {
 check4pg
 check4sqlx
 
-if [ -z "${SKIP_DOCKER}" ]; then
+if [[ "${SKIP_DOCKER}" == "false" ]]; then
 	docker run \
 		-e POSTGRES_USER=${DB_USER} \
 		-e POSTGRES_PASSWORD=${DB_PASSWORD} \
