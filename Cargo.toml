@@ -13,7 +13,7 @@ name = "zero2prod"
 
 [dependencies]
 config = { version = "*" }
-sqlx = { version = "*", default-features = false, features = [
+sqlx = { version = "0.8.2", default-features = false, features = [
   "runtime-tokio-rustls",
   "macros",
   "postgres",
