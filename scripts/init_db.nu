@@ -1,7 +1,7 @@
 use std log
 
 let db_user = $env.POSTGRES_USER? | default "postgres"
-let db_password = $env.POSTGRES_PASSWORD? | default "masterpassword"
+let db_password = $env.POSTGRES_PASSWORD? | default "password"
 let db_name = $env.POSTGRES_DB? | default "newsletter"
 let db_port = $env.POSTGRES_PORT? | default "5432"
 let db_host = $env.POSTGRES_HOST? | default "localhost"
