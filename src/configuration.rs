@@ -24,6 +24,7 @@ impl DatabaseSettings {
 pub struct Settings {
     pub database: DatabaseSettings,
     pub application_port: u16,
+    pub test_log: bool,
 }
 
 pub fn get_configuration() -> Result<Settings, config::ConfigError> {

@@ -1,7 +1,23 @@
+use once_cell::sync::Lazy;
 use sqlx::{Connection, Executor, PgConnection, PgPool};
 use std::net::TcpListener;
 use uuid::Uuid;
-use zero2prod::configuration::{get_configuration, DatabaseSettings};
+use zero2prod::{
+    configuration::{get_configuration, DatabaseSettings},
+    telemetry::{get_subscriber, init_subscriber},
+};
+
+// Ensure that the `tracing` stack is only initialized once using `once_cell`
+static TRACING: Lazy<()> = Lazy::new(|| {
+    let config = get_configuration().expect("Failed to load configuration.");
+    if config.test_log {
+        let subscriber = get_subscriber("test".into(), Some("debug".into()), std::io::stdout);
+        init_subscriber(subscriber);
+    } else {
+        let subscriber = get_subscriber("test".into(), Some("debug".into()), std::io::sink);
+        init_subscriber(subscriber);
+    }
+});
 
 struct TestApp {
     pub address: String,
@@ -32,6 +48,9 @@ pub async fn configure_database(config: &DatabaseSettings) -> PgPool {
     connection_pool
 }
 async fn spawn_app() -> TestApp {
+    // The first time `initialize` is invoked, the code in `TRACING` is executed.
+    // All other invocations will instead skip execution.
+    Lazy::force(&TRACING);
     let mut config = get_configuration().expect("Failed to load configuration.");
     config.database.database_name = Uuid::new_v4().to_string();
     let connection_pool = configure_database(&config.database).await;
