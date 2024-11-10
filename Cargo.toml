@@ -31,4 +31,6 @@ tracing = { version = "*", features = ["log"] }
 tracing-log = { version = "*" }
 tracing-subscriber = { version = "*", features = ["registry", "env-filter"] }
 tracing-bunyan-formatter = "*"
+tracing-actix-web = { version = "*" }
 once_cell = { version = "*" }
+secrecy = { version = "*", features = ["serde"] }
