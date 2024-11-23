@@ -25,6 +25,7 @@ actix-web = { version = "*" }
 tokio = { version = "*", features = ["macros", "rt-multi-thread"] }
 reqwest = { version = "*" }
 serde = { version = "*", features = ["derive"] }
+serde-aux = { version = "*" }
 uuid = { version = "*", features = ["v4", "serde"] }
 chrono = { version = "*", default-features = false, features = ["clock"] }
 tracing = { version = "*", features = ["log"] }
