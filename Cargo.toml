@@ -35,3 +35,12 @@ tracing-bunyan-formatter = "*"
 tracing-actix-web = { version = "*" }
 once_cell = { version = "*" }
 secrecy = { version = "*", features = ["serde"] }
+unicode-segmentation = { version = "*" }
+validator = { version = "*" }
+
+[dev-dependencies]
+claims = { version = "*" }
+fake = { version = "*" }
+quickcheck = { version = "*" }
+quickcheck_macros = { version = "*" }
+rand = { version = "*" }
